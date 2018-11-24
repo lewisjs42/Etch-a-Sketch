@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Etch-a-Sketch</title>
+</head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+	<div id="main">
+	<button onclick="reset()">Reset</button>
+		<div id="container">
+		</div>
+	</div>
+
+	<script>
+		function createContainer() {
+			let new_container = document.createElement('div');
+			new_container.setAttribute('id', 'container');
+			main.appendChild(new_container);
+		}
+		
+		function reset() {
+			main.removeChild(container);
+			start();
+		}
+			
+		
+		function start() {
+			const main = document.querySelector('#main');
+			const container = document.querySelector('#container');
+			
+			let size = 16;
+			
+			let i = 1;
+			let z = 1;
+			
+			let div;
+			let column;
+
+			//Creates a single div element.
+			function createDiv() {
+				div = document.createElement('div');
+				div.classList.add('div');
+				div.addEventListener("mouseover", mouseHover);
+				column.appendChild(div);
+			}
+			
+			//Creates a column of divs based on size prompt.
+			function createColumn() {
+				column = document.createElement('div');
+				column.classList.add('column');
+				
+				for (; i <= size; i++) {
+					createDiv();
+				}
+				container.appendChild(column);
+				
+				i = 1;
+			}
+			
+			//Creates a row of columns based on size prompt.
+			function createRow() {
+				for (; z <= size; z++) {
+					createColumn();
+				}
+				
+				z = 1;
+			}
+			
+			//Changes the color of the div.
+			function mouseHover() { 
+				let random_color = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];	
+				let color = random_color[Math.floor(Math.random() * random_color.length)];
+				this.style.backgroundColor = color;
+			
+				//this.style.backgroundColor = 'black'; //Turns the pixels black.
+			}
+			
+			size = prompt("New Document Size (Max size is 72.)", 72);
+			while (size > 72) {
+				size = prompt("New Document Size:", 72);
+			}
+			createContainer();
+			createRow();
+		}
+		
+		start();
+		
+	</script>
+  
+  </script>
+</body>
+</html>
