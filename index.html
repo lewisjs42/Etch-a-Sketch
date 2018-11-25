@@ -8,14 +8,16 @@
 </head>
 
 <body>
-
 	<div id="main">
-	<button onclick="reset()">Reset</button>
-		<div id="container">
-		</div>
+		<div id="container"></div>
 	</div>
-
+	
+	<div id="buttons">
+		<button id="button_reset" onclick="reset()">Reset</button>
+	</div>
+		
 	<script>
+		
 		function createContainer() {
 			let new_container = document.createElement('div');
 			new_container.setAttribute('id', 'container');
@@ -32,7 +34,7 @@
 			const main = document.querySelector('#main');
 			const container = document.querySelector('#container');
 			
-			let size = 16;
+			let size = 60;
 			
 			let i = 1;
 			let z = 1;
@@ -45,7 +47,14 @@
 				div = document.createElement('div');
 				div.classList.add('div');
 				div.addEventListener("mouseover", mouseHover);
+				div.addEventListener("click", mouseHover);
 				column.appendChild(div);
+				
+				//Scales the size of the pixels to fit the canvas.
+				let pixel_size = 600 / size;
+				let pixel_css = pixel_size + "px";
+				div.style.width = pixel_css;
+				div.style.height = pixel_css;
 			}
 			
 			//Creates a column of divs based on size prompt.
@@ -72,22 +81,28 @@
 			
 			//Changes the color of the div.
 			function mouseHover() { 
-				let random_color = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];	
+				//Color order is: red, orange, yellow, green, blue, indigo, violet.
+				let random_color = ['#F44336', '#FF9800', '#FFEB3B', '#4CAF50', '#2196F3', '#3F51B5', '#9C27B0'];	
 				let color = random_color[Math.floor(Math.random() * random_color.length)];
 				this.style.backgroundColor = color;
 			
 				//this.style.backgroundColor = 'black'; //Turns the pixels black.
 			}
 			
-			size = prompt("New Document Size (Max size is 72.)", 72);
-			while (size > 72) {
-				size = prompt("New Document Size:", 72);
+			size = prompt("New Document Size (Max size is 60.)", 60);
+			
+			while (size > 60) {
+				size = prompt("New Document Size:", 60);
 			}
+			
 			createContainer();
 			createRow();
+			
 		}
 		
 		start();
+		
+		//Method to scale pixel size is to set the pixel size to 600 / prompt(size).
 		
 	</script>
   

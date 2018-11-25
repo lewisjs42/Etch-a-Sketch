@@ -1,11 +1,18 @@
 body {
-	background-color: #B00020;
+	margin: 0;
+	padding: 20px;
+	background-color: #F44336;
 }
 
 #main {
 	margin: 0 auto;
-	width: 720px;
-	height: 720px;
+	width: 600px;
+	height: 600px;
+	border-top: 10px solid #374046;
+	border-bottom: 5px solid white;
+	border-left: 10px solid #374046;
+	border-right: 5px solid white;
+	background-color: white;
 }
 
 .column {
@@ -16,4 +23,21 @@ body {
 	height: 10px;
 	width: 10px;
 	background-color: white;
+}
+
+#buttons {
+	margin: 0 auto;
+	width: 600px;
+}
+
+#button_reset {
+	margin: 15px 0px;
+	padding: 10px;
+	background-color: #FFC107;
+	border: solid 5px #FFC107;
+	border-radius: 5px;
+	color: #F44336;
+	font-family: Arial, Sans-sarif;
+	font-weight: bold;
+	width: 100%;
 }
