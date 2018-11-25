@@ -67,6 +67,7 @@ body {
 #color_random {
 	background-image: url("./images/random_colors.png");
 	background-position: center;
+	background-size: 75%;
 }
 #color_white {
 	background-color: white;

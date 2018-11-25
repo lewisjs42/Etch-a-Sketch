@@ -4,7 +4,6 @@ function createContainer() {
 	main.appendChild(new_container);
 }
 
-//
 function reset() {
 	main.removeChild(container);
 	createContainer();
@@ -28,9 +27,12 @@ function start() {
 	function createDiv() {
 		div = document.createElement('div');
 		div.classList.add('div');
-		div.addEventListener("mouseover", mouseHover);
-		column.appendChild(div);
 		
+		div.addEventListener("mouseover", mouseHover);
+		div.addEventListener("touchmove", mouseHover); //For touchscreen support, if it works.
+		//div.addEventListener("click", mouseHover);
+		
+		column.appendChild(div);
 		//Scales the size of the pixels to fit the canvas.
 		let pixel_size = 600 / size;
 		let pixel_css = pixel_size + "px";
@@ -69,13 +71,11 @@ function start() {
 			let color = random_color[Math.floor(Math.random() * random_color.length)];
 			this.style.backgroundColor = color;
 		} else {
-		
-			//this.style.backgroundColor = 'black'; //Turns the pixels black.
 			this.style.backgroundColor = color;
 		}
 	}
 	
-	size = prompt("New Document Size (Max size is 60.)", 60);
+	size = prompt("New Image Size (Max size is 60.)", 60);
 	
 	while (size > 60) {
 		size = prompt("New Document Size:", 60);
@@ -98,4 +98,5 @@ function colorRandom() {
 	is_random_color = true;
 }
 
+//Starts the app on launch.
 start();
